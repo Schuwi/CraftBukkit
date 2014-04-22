@@ -318,7 +318,9 @@ public final class CraftItemStack extends ItemStack {
 
     public static ItemMeta getItemMeta(net.minecraft.server.ItemStack item) {
         if (!hasItemMeta(item)) {
-            return CraftItemFactory.instance().getItemMeta(getType(item));
+            ItemMeta itemMeta = CraftItemFactory.instance().getItemMeta(getType(item));
+            setItemMeta(item, itemMeta);
+            return itemMeta;
         }
         switch (getType(item)) {
             case WRITTEN_BOOK:
